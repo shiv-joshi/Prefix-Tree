@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class implements a Trie. 
  * 
- * @author Shiv Joshi, scj61, scj61@rutgers.edu
+ * @author Shiv Joshi
  * java -cp bin trie.TrieApp
  */
 public class Trie {
