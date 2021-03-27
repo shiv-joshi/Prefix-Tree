@@ -22,7 +22,6 @@ public class Trie {
 	 * @return Root of trie with all words inserted from the input array
 	 */
 	public static TrieNode buildTrie(String[] allWords) {
-		/** COMPLETE THIS METHOD **/
 
 		//create empty root and point to first child
 		Indexes substr = new Indexes(0, (short)0, (short)(allWords[0].length()-1));
@@ -49,7 +48,7 @@ public class Trie {
 				//enter all code if word doesn't match
 				//make a new method
 
-				//finding next prefix, if any---------------
+				//finding next prefix
 				p=1;
 				while(!t1.equals(t2) && pointerP.sibling!=null){
 					pointerP=pointerP.sibling;
@@ -70,7 +69,6 @@ public class Trie {
 					}
 					pointerS.sibling = tempN;
 				}
-				//-----------------------------------------
 
 				if(pointerP.firstChild==null && t1.equals(t2)){
 					Indexes prefixI = new Indexes(pointerP.substr.wordIndex, (short)0, end);
@@ -421,12 +419,8 @@ public class Trie {
 	 * 			order of leaf nodes does not matter.
 	 *         If there is no word in the tree that has this prefix, null is returned.
 	 */
-	public static ArrayList<TrieNode> completionList(TrieNode root,
-										String[] allWords, String prefix) {
-		/** COMPLETE THIS METHOD **/
+	public static ArrayList<TrieNode> completionList(TrieNode root, String[] allWords, String prefix) {
 		
-		// FOLLOWING LINE IS A PLACEHOLDER TO ENSURE COMPILATION
-		// MODIFY IT AS NEEDED FOR YOUR IMPLEMENTATION
 		ArrayList<TrieNode> a = new ArrayList<TrieNode>();
 		TrieNode ptr = root.firstChild;
 
@@ -451,7 +445,7 @@ public class Trie {
 		String s1 = "zyx", s2 = prefix;
 		
 		if((ptr.substr.endIndex+1)>prefix.length()){
-			return findPrefix(ptr.sibling, prefix, allWords);//-------
+			return findPrefix(ptr.sibling, prefix, allWords);
 		}else{
 			s1 = allWords[ptr.substr.wordIndex].substring(ptr.substr.startIndex, ptr.substr.endIndex+1);
 			s2 = prefix.substring(ptr.substr.startIndex, ptr.substr.endIndex+1);
@@ -460,12 +454,12 @@ public class Trie {
 				return ptr;
 			}
 			if(s1.equals(s2)){
-				return findPrefix(ptr.firstChild, prefix, allWords);//------
+				return findPrefix(ptr.firstChild, prefix, allWords);
 			}
 		}
 
-		//
-		return findPrefix(ptr.sibling, prefix, allWords);//--------
+	
+		return findPrefix(ptr.sibling, prefix, allWords);
 
 	}
 
